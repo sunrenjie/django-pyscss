@@ -27,7 +27,7 @@ class DjangoExtension(CoreExtension):
         else:
             basename = original_path.name
 
-        if original_path.is_absolute():
+        if original_path.is_absolute() or name[0] == '/':  # such that name like '/path/to/file.scss' works on Windows
             # Remove the beginning slash
             search_path = original_path.relative_to('/').parent
         elif rule.source_file.origin:
