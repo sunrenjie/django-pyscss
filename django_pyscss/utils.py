@@ -39,6 +39,7 @@ def get_file_from_finders(filename):
 
 
 def get_file_and_storage(filename):
+    filename = os.path.normpath(filename)
     name, storage = get_file_from_finders(filename)
     # get_file_from_finders could fail in production if code is a deployed as a
     # package without it's package_data. In that case, we'd assume that
